@@ -1,0 +1,11 @@
+Este projeto consiste num script em Python para pré-processamento de um ficheiro de texto contendo um dicionário médico. O principal objetivo é limpar e reorganizar o conteúdo do ficheiro original, corrigindo quebras de página e separações incorretas entre conceitos e definições, de forma a produzir uma versão estruturada e pronta para análise.
+
+O script começa por ler o ficheiro TPC3/dicionario_medico.txt, utilizando codificação UTF-8 para garantir a correta interpretação de caracteres acentuados. De seguida, aplica um conjunto de expressões regulares (através do módulo re) para tratar problemas de formatação existentes no texto original.
+
+Numa primeira fase, são isolados temporariamente os conceitos através da inserção de um marcador especial (@) após parágrafos separados por duas quebras de linha. Depois, as quebras de página (\f) são substituídas por quebras de linha simples. O script corrige ainda situações em que uma definição e um novo conceito foram indevidamente separados por quebras de linha adicionais. Esta correção baseia-se no facto de todos os conceitos começarem com letra maiúscula, incluindo caracteres acentuados. Também são tratadas quebras indevidas dentro da mesma definição, quando estas ocorrem entre letras minúsculas, garantindo que o texto é corretamente unido.
+
+Após todas as correções, o marcador temporário @ é removido, obtendo-se assim o texto final tratado. Esse resultado é impresso no terminal e guardado no ficheiro dicionario_medico_tratado.txt.
+
+Por fim, o texto é dividido com base em duas quebras de linha consecutivas (\n\n), assumindo que cada bloco corresponde a um conceito, e é apresentada no terminal a contagem total de entradas do dicionário.
+
+Este script é particularmente útil no contexto de processamento de linguagem natural (NLP), limpeza e normalização de dados textuais, bem como na preparação de corpus para trabalhos académicos na área da Engenharia Informática ou Linguística Computacional. Requer apenas Python 3 e utiliza exclusivamente bibliotecas padrão.
