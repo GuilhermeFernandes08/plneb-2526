@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Point | Marca de Carreira AAUMinho</title>
+    <style>
+
+        :root {
+            --brand-pink: #D1005D;
+            --brand-purple: #2D1B4D;
+            --brand-light: #F8FAFC;
+            --brand-accent: #f1f5f9;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--brand-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            z-index: 1000;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-square {
+            width: 40px; height: 40px; background: var(--brand-pink); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; color: white;
+            font-weight: 900; box-shadow: 0 4px 12px rgba(209, 0, 93, 0.2);
+        }
+        .logo-text { display: flex; flex-direction: column; }
+        .logo-text span:first-child { font-weight: 900; color: var(--brand-purple); text-transform: uppercase; font-size: 1.1rem; letter-spacing: -0.5px; }
+        .logo-text span:last-child { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-muted); font-size: 0.75rem; 
+            font-weight: 800; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--brand-pink); }
+
+
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 8% 80px;
+            background: linear-gradient(rgba(45, 27, 77, 0.85), rgba(209, 0, 93, 0.5)), url('images/summit-dia2-53.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-container { max-width: 900px; margin: 0 auto; z-index: 10; }
+        
+        .hero-tag {
+            font-size: 12px; font-weight: 900; letter-spacing: 5px; 
+            text-transform: uppercase; opacity: 0.8; display: block; margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; 
+            text-transform: uppercase; font-style: italic; line-height: 0.85; margin-bottom: 30px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        
+        h1 span { 
+            color: var(--brand-pink); 
+            text-decoration: underline rgba(255,255,255,0.2); 
+        }
+
+        .hero-p { 
+            font-size: clamp(1.1rem, 3vw, 1.4rem); 
+            max-width: 750px; 
+            margin: 0 auto 50px; 
+            font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            padding: 20px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; text-decoration: none; font-size: 0.85rem; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: none;
+            letter-spacing: 1px;
+        }
+        .btn-pink { background: var(--brand-pink); color: white; box-shadow: 0 15px 30px rgba(209, 0, 93, 0.4); }
+        .btn-outline { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(10px); }
+        .btn-purple { background: var(--brand-purple); color: white; box-shadow: 0 15px 30px rgba(45, 27, 77, 0.3); }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        .section { padding: 100px 8%; max-width: 1300px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title span { color: var(--brand-pink); font-weight: 900; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; }
+        .section-title h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; color: var(--brand-purple); text-transform: uppercase; font-style: italic; margin-top: 10px; line-height: 1.1; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .card {
+            background: white; padding: 50px; border-radius: 40px;
+            border: 1px solid #f1f5f9; transition: 0.4s ease;
+            display: flex; flex-direction: column; align-items: flex-start;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); border-color: var(--brand-pink); }
+        .card-icon { 
+            width: 70px; height: 70px; background: var(--brand-light); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 30px;
+            color: var(--brand-pink);
+        }
+        .card h3 { color: var(--brand-purple); text-transform: uppercase; font-weight: 900; margin-bottom: 15px; font-size: 1.8rem; }
+        .card p { color: var(--text-muted); margin-bottom: 25px; font-size: 1rem; line-height: 1.7; }
+        .card-info { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--brand-pink); letter-spacing: 1px; margin-top: auto; padding-top: 20px; border-top: 1px solid #f1f5f9; width: 100%; }
+
+        .impact-section {
+            background: var(--brand-purple);
+            color: white;
+            padding: 80px 8%;
+            text-align: center;
+        }
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .impact-card h4 { font-size: 4rem; font-weight: 900; color: var(--brand-pink); margin-bottom: 10px; line-height: 1; }
+        .impact-card p { font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8; }
+        .about-features { list-style: none; margin-top: 30px; }
+        .about-features li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-weight: 700; font-size: 1.1rem; color: var(--brand-purple); }
+        .about-features li::before { content: "✓"; background: var(--brand-pink); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .about-image { border-radius: 40px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; }
+        .about-image img { width: 100%; height: 100%; object-fit: contain; padding: 2rem; display: block; }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .partner-card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid #f1f5f9;
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .partner-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); border-color: var(--brand-pink); }
+        .partner-card img { max-width: 80%; max-height: 60%; object-fit: contain; filter: grayscale(1); opacity: 0.5; transition: 0.4s; }
+        .partner-card:hover img { filter: grayscale(0); opacity: 1; transform: scale(1.05); }
+
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { background: white; padding: 40px; border-radius: 30px; border: 1px solid #f1f5f9; position: relative; }
+        .testimonial-icon { font-size: 3rem; color: var(--brand-pink); opacity: 0.2; position: absolute; top: 20px; right: 30px; }
+        .testimonial-text { font-size: 1.05rem; font-style: italic; color: var(--text-muted); margin-bottom: 30px; position: relative; z-index: 2; line-height: 1.7; }
+        .testimonial-author { display: flex; align-items: center; gap: 15px; border-top: 1px solid #f1f5f9; padding-top: 20px; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--brand-light); display: flex; align-items: center; justify-content: center; font-weight: 900; color: var(--brand-purple); }
+        .author-info h5 { font-weight: 800; color: var(--brand-purple); }
+        .author-info p { font-size: 0.75rem; color: var(--brand-pink); font-weight: 700; text-transform: uppercase; }
+
+        .agenda-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .agenda-item {
+            background: white; padding: 35px; border-radius: 30px; border: 1px solid #f1f5f9;
+            display: flex; gap: 20px; align-items: center; transition: 0.3s;
+        }
+        .agenda-item:hover { transform: translateY(-5px); border-color: var(--brand-pink); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .date-box {
+            background: var(--brand-purple); color: white; padding: 15px;
+            border-radius: 20px; min-width: 80px; text-align: center;
+        }
+        .date-box span:first-child { display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; opacity: 0.6; }
+        .date-box span:last-child { display: block; font-size: 1.5rem; font-weight: 900; }
+        .agenda-info h4 { color: var(--brand-purple); font-weight: 900; text-transform: uppercase; font-size: 1rem; margin-bottom: 5px; }
+        .agenda-info p { font-size: 0.8rem; color: var(--text-muted); }
+
+        .summit-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
+        .tab-btn {
+            background: #f1f5f9; border: none; padding: 15px 35px; border-radius: 50px;
+            font-weight: 900; text-transform: uppercase; font-size: 0.75rem; color: var(--text-muted);
+            cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+        }
+        .tab-btn.active { background: var(--brand-purple); color: white; box-shadow: 0 10px 20px rgba(45, 27, 77, 0.2); }
+
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .package-card {
+            background: white; padding: 50px 40px; border-radius: 40px; border: 2px solid #f1f5f9;
+            position: relative; display: flex; flex-direction: column; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .package-card:hover { transform: translateY(-12px); box-shadow: 0 35px 70px rgba(0,0,0,0.08); }
+        .package-card.featured { border-color: var(--brand-pink); }
+        .package-card.dark { background: var(--brand-purple); color: white; border: none; }
+        .package-tag { 
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--brand-pink); color: white; padding: 8px 20px; border-radius: 20px;
+            font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .package-price { font-size: 3rem; font-weight: 900; margin-bottom: 30px; color: var(--brand-pink); letter-spacing: -1px; }
+        .package-card.dark .package-price { color: white; }
+        .package-list { list-style: none; margin-bottom: 40px; flex-grow: 1; }
+        .package-list li { font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; padding-left: 30px; position: relative; opacity: 0.8; }
+        .package-list li::before { content: "✓"; position: absolute; left: 0; color: var(--brand-pink); font-weight: 900; font-size: 1.1rem; }
+
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        details { background: white; border-radius: 20px; margin-bottom: 15px; border: 1px solid #f1f5f9; overflow: hidden; transition: 0.3s; }
+        details[open] { border-color: var(--brand-pink); box-shadow: 0 10px 20px rgba(209,0,93,0.05); }
+        summary { padding: 25px; font-weight: 800; font-size: 1.1rem; color: var(--brand-purple); cursor: pointer; list-style: none; position: relative; }
+        summary::after { content: "+"; position: absolute; right: 25px; color: var(--brand-pink); font-size: 1.5rem; transition: 0.3s; }
+        details[open] summary::after { content: "−"; }
+        .faq-content { padding: 0 25px 25px; color: var(--text-muted); line-height: 1.7; }
+
+        .form-container {
+            background: var(--brand-purple); border-radius: 50px; padding: 80px; color: white;
+            max-width: 1000px; margin: 50px auto; box-shadow: 0 40px 80px rgba(45, 27, 77, 0.3);
+            text-align: center;
+        }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+        input, select, textarea {
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            padding: 18px 25px; border-radius: 15px; color: white; outline: none; transition: 0.3s;
+            font-weight: 500;
+        }
+        input:focus, textarea:focus, select:focus { border-color: var(--brand-pink); background: rgba(255,255,255,0.1); }
+        select option { background: var(--brand-purple); color: white; }
+
+        footer { background: var(--brand-purple); color: white; padding: 100px 8% 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-bottom { 
+            border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.4;
+        }
+
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            h1 { font-size: 3.5rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .section { padding: 60px 5%; }
+            .form-container { padding: 40px 20px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <div class="logo-box">
+            <div class="logo-square">SP</div>
+            <div class="logo-text">
+                <span>Start Point</span>
+                <span>By AAUMinho</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#marca">Ecossistema</a>
+            <a href="#agenda">Agenda</a>
+            <a href="#summit">Summit 2026</a>
+            <a href="#empresa" class="btn-pink" style="padding: 10px 25px; border-radius: 50px; color: white;">Para Empresas</a>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="hero-container">
+            <span class="hero-tag">A tua ponte para o Mercado de Trabalho</span>
+            <h1>O Futuro Começa <br><span>Aqui.</span></h1>
+            <p class="hero-p">
+                A Start Point é a marca estratégica da AAUMinho focada na empregabilidade, empreendedorismo e no desenvolvimento de carreiras de excelência.
+            </p>
+            <div class="btn-group">
+                <a href="#summit" class="btn btn-pink">Summit 2026</a>
+                <a href="#marca" class="btn btn-outline">Descobrir o Ecossistema</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="impact-section">
+        <div class="impact-grid">
+            <div class="impact-card">
+                <h4>18</h4>
+                <p>Edições de Sucesso</p>
+            </div>
+            <div class="impact-card">
+                <h4>+5K</h4>
+                <p>Estudantes Impactados</p>
+            </div>
+            <div class="impact-card">
+                <h4>120+</h4>
+                <p>Empresas Parceiras</p>
+            </div>
+            <div class="impact-card">
+                <h4>100%</h4>
+                <p>Foco no Talento</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="sobre" class="section">
+        <div class="about-grid">
+            <div class="about-text">
+                <span style="color: var(--brand-pink); font-weight: 900; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px;">O Evento Anual</span>
+                <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--brand-purple); text-transform: uppercase; font-style: italic; margin: 10px 0 20px; line-height: 1.1;">Mais que uma feira de emprego.</h2>
+                <p>A Start Point Summit é o maior evento de empregabilidade da região Norte. Durante dias intensos, transformamos os campi universitários no principal ponto de encontro entre o talento emergente e as organizações de referência nacional e internacional.</p>
+                <p>O nosso objetivo é claro: proporcionar ferramentas reais, criar ligações valiosas e acelerar a integração dos nossos estudantes no mercado de trabalho altamente competitivo.</p>
+                
+                <ul class="about-features">
+                    <li>Networking Direto com Recrutadores</li>
+                    <li>Speed Interviews & Pitching</li>
+                    <li>Revisão de Currículos & Mentoria</li>
+                    <li>Workshops de Soft & Hard Skills</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <div style="background: var(--brand-light); width: 100%; aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; border: 1px solid #e2e8f0; border-radius: 40px;">
+                    <img src="images/startpoint_icon_roxo - cópia.png" alt="Start Point Evento" style="width:100%; height:100%; object-fit:contain; padding: 2rem; border-radius: 40px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="marca" class="section" style="background: var(--brand-accent);">
+        <div class="section-title">
+            <span>Suporte Contínuo</span>
+            <h2>Ecossistema de Carreira</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">💡</div>
+                <h3>LiftOff</h3>
+                <p>O Gabinete de Empreendedorismo da AAUMinho. Ajudamos-te a passar da ideia à prática. Oferecemos mentoria especializada, validação de projetos, suporte na criação de planos de negócio e acesso a redes de incubação.</p>
+                <p style="font-size: 0.9rem; font-weight: 700; color: var(--brand-purple);">Serviços chave:</p>
+                <ul style="list-style:none; font-size:0.85rem; margin-bottom:20px; color:var(--text-muted);">
+                    <li>- Consultoria de Negócio</li>
+                    <li>- Sessões de Pitching</li>
+                    <li>- Ligação a Investidores</li>
+                </ul>
+                <span class="card-info">Contacto: Sofia Pereira</span>
+            </div>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>GIP</h3>
+                <p>O Gabinete de Inserção Profissional é a tua linha direta para o mercado. Trabalhamos diariamente para reunir as melhores ofertas de emprego, estágios de verão e oportunidades internacionais para os alunos da UMinho.</p>
+                <p style="font-size: 0.9rem; font-weight: 700; color: var(--brand-purple);">Serviços chave:</p>
+                <ul style="list-style:none; font-size:0.85rem; margin-bottom:20px; color:var(--text-muted);">
+                    <li>- Bolsa de Emprego Exclusiva</li>
+                    <li>- Otimização de LinkedIn e CV</li>
+                    <li>- Simulação de Entrevistas</li>
+                </ul>
+                <span class="card-info">Contacto: Flávia Faria</span>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="parceiros" class="section" style="background: white;">
+        <div class="section-title">
+            <span>Apoios de Excelência</span>
+            <h2>Marcas que Confiam em Nós</h2>
+        </div>
+        <div class="partners-grid">
+            <div class="partner-card"><img src="images/Accenture.svg.png" alt="Accenture"></div>
+            <div class="partner-card"><img src="images/Adidas_logo.png" alt="Adidas"></div>
+            <div class="partner-card"><img src="images/Continental-Logo.png" alt="Continental"></div>
+        </div>
+    </section>
+
+
+    <section id="agenda" class="section" style="background: var(--brand-accent);">
+        <div class="section-title">
+            <span>Calendário Anual</span>
+            <h2>Próximas Iniciativas</h2>
+        </div>
+        <div class="agenda-grid">
+            <div class="agenda-item">
+                <div class="date-box"><span>Abr</span><span>15</span></div>
+                <div class="agenda-info">
+                    <h4>Workshop LinkedIn Pro</h4>
+                    <p>Otimiza o teu perfil profissional em tempo real com recrutadores de topo.</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="date-box"><span>Mai</span><span>04</span></div>
+                <div class="agenda-info">
+                    <h4>Open Day LiftOff</h4>
+                    <p>Conhece as startups que nascem na UMinho e o processo de incubação.</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="date-box"><span>Jun</span><span>12</span></div>
+                <div class="agenda-info">
+                    <h4>Clínica de CV</h4>
+                    <p>Sessão prática de revisão de currículos individualizada com o GIP.</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="#" class="btn btn-purple">Ver Calendário Completo</a>
+        </div>
+    </section>
+
+
+    <section class="section" style="background: white;">
+        <div class="section-title">
+            <span>Comunidade</span>
+            <h2>O Que Dizem de Nós</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-icon">"</div>
+                <p class="testimonial-text">"Graças à Start Point Summit consegui o contacto que me levou ao meu primeiro estágio profissional. O ambiente é incrível e as empresas estão realmente à procura do nosso talento."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MS</div>
+                    <div class="author-info">
+                        <h5>Marta Silva</h5>
+                        <p>Aluna de Engenharia Informática</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-icon">"</div>
+                <p class="testimonial-text">"O apoio do LiftOff foi fundamental para transformarmos a nossa tese de mestrado numa startup real. A mentoria de negócio e as sessões de pitch fizeram toda a diferença."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JP</div>
+                    <div class="author-info">
+                        <h5>João Pedro</h5>
+                        <p>Founder de Startup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-icon">"</div>
+                <p class="testimonial-text">"Participar na Start Point é obrigatório para nós. A qualidade dos estudantes da UMinho e a organização do evento garantem-nos excelentes processos de recrutamento."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">HR</div>
+                    <div class="author-info">
+                        <h5>Equipa de RH</h5>
+                        <p>Empresa Parceira Gold</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="summit" class="section" style="background: var(--brand-accent);">
+        <div class="section-title">
+            <span>18ª Edição | 2026</span>
+            <h2>Pacotes Summit 2026</h2>
+        </div>
+
+        <div class="summit-tabs">
+            <button class="tab-btn active" id="btnBraga" onclick="toggleSummit('braga')">Braga (21-22 Out)</button>
+            <button class="tab-btn" id="btnGuimaraes" onclick="toggleSummit('guimaraes')">Guimarães (04 Nov)</button>
+        </div>
+
+
+        <div id="braga-view" class="package-grid">
+            <div class="package-card">
+                <h4 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: var(--brand-purple);">Bronze</h4>
+                <div class="package-price">300€</div>
+                <ul class="package-list">
+                    <li>Stand de 4m² (1 frente)</li>
+                    <li>Participação em 1 Dia de Mostra</li>
+                    <li>Acesso a base de dados de CVs</li>
+                    <li>Logótipo no Guia Oficial</li>
+                </ul>
+                <a href="#empresa" class="btn btn-outline" style="color: var(--brand-purple); width: 100%; text-align: center; border-color: var(--brand-purple);">Escolher Pacote</a>
+            </div>
+            <div class="package-card featured">
+                <span class="package-tag">Escolha Popular</span>
+                <h4 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: var(--brand-purple);">Silver</h4>
+                <div class="package-price">500€</div>
+                <ul class="package-list">
+                    <li>Stand de 4m² (2 frentes)</li>
+                    <li>Participação em 2 Dias de Mostra</li>
+                    <li>Logótipo destacado no Vídeo Oficial</li>
+                    <li>Destaque nas Redes Sociais</li>
+                    <li>Acesso VIP ao lounge</li>
+                </ul>
+                <a href="#empresa" class="btn btn-pink" style="width: 100%; text-align: center;">Escolher Pacote</a>
+            </div>
+            <div class="package-card dark">
+                <h4 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: var(--brand-pink);">Gold</h4>
+                <div class="package-price">700€</div>
+                <ul class="package-list">
+                    <li>Stand Próprio Personalizado (6m²)</li>
+                    <li>Apresentação exclusiva em Palco Central</li>
+                    <li>Participação no Mentoring Point</li>
+                    <li>Destaque Máximo na App do Evento</li>
+                    <li>Acesso direto prévio a talentos</li>
+                </ul>
+                <a href="#empresa" class="btn btn-outline" style="width: 100%; text-align: center;">Escolher Pacote</a>
+            </div>
+        </div>
+
+
+        <div id="guimaraes-view" class="package-grid" style="display: none;">
+            <div class="package-card" style="grid-column: span 1.5;">
+                <h4 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: var(--brand-purple);">Standard</h4>
+                <div class="package-price">400€</div>
+                <ul class="package-list">
+                    <li>Stand de 4m²</li>
+                    <li>Presença no Multiusos de Guimarães</li>
+                    <li>Participação ativa em Workshops</li>
+                    <li>Acesso a base de dados de talento</li>
+                </ul>
+                <a href="#empresa" class="btn btn-outline" style="color: var(--brand-purple); width: 100%; text-align: center; border-color: var(--brand-purple);">Escolher Pacote</a>
+            </div>
+            <div class="package-card featured" style="grid-column: span 1.5;">
+                <h4 style="font-size: 1.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; color: var(--brand-purple);">Premium</h4>
+                <div class="package-price">700€</div>
+                <ul class="package-list">
+                    <li>Espaço Próprio e Personalizável (6m²)</li>
+                    <li>Participação prioritária em Speed Interviews</li>
+                    <li>Logótipo inserido na T-shirt do Staff</li>
+                    <li>Destaque Premium em todas as plataformas</li>
+                </ul>
+                <a href="#empresa" class="btn btn-pink" style="width: 100%; text-align: center;">Escolher Pacote</a>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">* Aos valores acresce IVA à taxa legal em vigor.</p>
+    </section>
+
+
+    <section class="section" style="background: white;">
+        <div class="section-title">
+            <span>Dúvidas Comuns</span>
+            <h2>Perguntas Frequentes</h2>
+        </div>
+        <div class="faq-container">
+            <details>
+                <summary>A Start Point Summit é exclusiva para alunos da UMinho?</summary>
+                <div class="faq-content">
+                    Sim e não. O evento é organizado pela AAUMinho focado primeiramente nos estudantes da Universidade do Minho, mas é aberto a todos os jovens talentos da região que procurem uma oportunidade de carreira ou contacto com o mercado de trabalho.
+                </div>
+            </details>
+            <details>
+                <summary>Como estudante, tenho de pagar para participar na Summit?</summary>
+                <div class="faq-content">
+                    Não, a entrada para estudantes e recém-diplomados é totalmente gratuita. Recomendamos apenas que tragas o teu currículo atualizado e te inscrevas previamente na plataforma oficial para garantires o acesso rápido por QR Code.
+                </div>
+            </details>
+            <details>
+                <summary>As vagas para empresas esgotam rápido?</summary>
+                <div class="faq-content">
+                    Sim, devido à elevada procura das marcas pelas capacidades técnicas dos alunos da UMinho, as vagas (especialmente os pacotes Gold e Silver) costumam esgotar meses antes do evento. Aconselhamos a inscrição na fase de Early Bird (até 30 de Junho).
+                </div>
+            </details>
+            <details>
+                <summary>O LiftOff apoia ideias de todas as áreas de estudo?</summary>
+                <div class="faq-content">
+                    Absolutamente. O LiftOff apoia ideias de base tecnológica, social, humanística ou qualquer outra área. A inovação nasce em todas as escolas da academia.
+                </div>
+            </details>
+        </div>
+    </section>
+
+
+    <section id="empresa" class="section" style="background: var(--brand-accent);">
+        <div class="form-container">
+            <h2 style="font-size: 2.5rem; font-weight: 900; text-transform: uppercase; font-style: italic; margin-bottom: 15px;">Liga a tua Empresa ao Talento</h2>
+            <p style="opacity: 0.8; margin-bottom: 40px; font-size: 1.1rem;">Candidata a tua organização para a 18ª Edição da Summit 2026.<br>Garante as melhores condições aproveitando a fase Early Bird até 30 de Junho.</p>
+            <form onsubmit="event.preventDefault(); alert('Candidatura enviada com sucesso! Entraremos em contacto em breve com o Dossier Oficial.')">
+                <div class="form-grid">
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px; opacity:0.7; margin-left: 10px;">Nome da Empresa</label>
+                        <input type="text" placeholder="Ex: Tech Solutions Lda." required>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px; opacity:0.7; margin-left: 10px;">Email Corporativo</label>
+                        <input type="email" placeholder="rh@empresa.com" required>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px; opacity:0.7; margin-left: 10px;">Localização & Pacote</label>
+                        <select>
+                            <option value="">-- Selecione o Pacote Desejado --</option>
+                            <option>Braga - Plano Gold</option>
+                            <option>Braga - Plano Silver</option>
+                            <option>Braga - Plano Bronze</option>
+                            <option>Guimarães - Plano Premium</option>
+                            <option>Guimarães - Plano Standard</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px; opacity:0.7; margin-left: 10px;">Pessoa de Contacto & Telefone</label>
+                        <input type="text" placeholder="Ex: João Costa - 910 000 000" required>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: left;">
+                    <label style="display:block; font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px; opacity:0.7; margin-left: 10px;">Interesse adicional ou Mensagem</label>
+                    <textarea placeholder="Gostaria também de patrocinar um Coffee Break ou organizar um Workshop..." style="height: 120px; resize: none;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-pink" style="margin-top: 30px; width: 100%; font-size: 1rem; padding: 25px;">Solicitar Inscrição Oficial</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="footer-grid">
+            <div style="grid-column: span 1.5;">
+                <div class="logo-box" style="margin-bottom: 20px;">
+                    <div class="logo-square">SP</div>
+                    <div class="logo-text">
+                        <span style="color: white;">Start Point</span>
+                        <span>By AAUMinho</span>
+                    </div>
+                </div>
+                <p style="opacity: 0.6; font-size: 0.9rem; line-height: 1.8; max-width: 300px;">A marca estratégica da Associação Académica da Universidade do Minho dedicada a potenciar a empregabilidade e o empreendedorismo jovem desde a primeira hora.</p>
+            </div>
+            
+            <div>
+                <h4 style="font-size: 0.75rem; font-weight: 900; opacity: 0.5; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px;">Plataforma</h4>
+                <ul style="list-style: none; font-size: 0.9rem; font-weight: 600; line-height: 2.2;">
+                    <li><a href="#sobre" style="color: white; text-decoration: none; opacity: 0.8; transition: 0.3s;">Sobre Nós</a></li>
+                    <li><a href="#marca" style="color: white; text-decoration: none; opacity: 0.8; transition: 0.3s;">GIP & LiftOff</a></li>
+                    <li><a href="#summit" style="color: white; text-decoration: none; opacity: 0.8; transition: 0.3s;">Summit 2026</a></li>
+                    <li><a href="https://aauminho.pt" target="_blank" style="color: white; text-decoration: none; opacity: 0.8; transition: 0.3s;">AAUMinho Institucional</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="font-size: 0.75rem; font-weight: 900; opacity: 0.5; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px;">Contactos</h4>
+                <ul style="list-style: none; font-size: 0.9rem; font-weight: 600; line-height: 2.2; opacity: 0.8;">
+                    <li>Geral: <span style="color: var(--brand-pink);">startpoint@aaum.pt</span></li>
+                    <li>GIP: <span style="color: var(--brand-pink);">gip@aauminho.pt</span></li>
+                    <li>LiftOff: <span style="color: var(--brand-pink);">liftoff@aauminho.pt</span></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="font-size: 0.75rem; font-weight: 900; opacity: 0.5; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px;">Redes Sociais</h4>
+                <div style="display: flex; gap: 15px;">
+                    <!-- Ícone Insta (simples HTML) -->
+                    <a href="https://www.instagram.com/startpoint.pt/" target="_blank" style="width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s;" onmouseover="this.style.background='var(--brand-pink)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <!-- Ícone LinkedIn -->
+                    <a href="#" target="_blank" style="width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s;" onmouseover="this.style.background='var(--brand-pink)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 ASSOCIAÇÃO ACADÉMICA DA UNIVERSIDADE DO MINHO. TODOS OS DIREITOS RESERVADOS.</p>
+            <p>Braga • Guimarães</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSummit(loc) {
+            const braga = document.getElementById('braga-view');
+            const guimaraes = document.getElementById('guimaraes-view');
+            const btnB = document.getElementById('btnBraga');
+            const btnG = document.getElementById('btnGuimaraes');
+            if(loc === 'braga') {
+                braga.style.display = 'grid';
+                guimaraes.style.display = 'none';
+                btnB.classList.add('active');
+                btnG.classList.remove('active');
+            } else {
+                braga.style.display = 'none';
+                guimaraes.style.display = 'grid';
+                btnG.classList.add('active');
+                btnB.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
