@@ -1,0 +1,11 @@
+Este projeto consiste no desenvolvimento de um web scraper em Python que recolhe informação sobre doenças a partir do site Atlas da Saúde, armazenando os dados num ficheiro JSON. O objetivo principal é automatizar a extração de três elementos para cada doença: o nome, uma descrição curta e uma descrição completa, percorrendo todas as páginas organizadas alfabeticamente.
+
+O código inicia-se com a importação das bibliotecas necessárias. A biblioteca requests é utilizada para fazer pedidos HTTP e obter o conteúdo das páginas web, enquanto o BeautifulSoup permite analisar o HTML e extrair os elementos pretendidos. A biblioteca string é usada para gerar automaticamente o alfabeto (de “a” a “z”), e o json serve para guardar os dados recolhidos num ficheiro estruturado.
+
+De seguida, é definida a URL base do site, que será combinada com cada letra do alfabeto para aceder às diferentes páginas. É também criado um dicionário vazio (res) que irá armazenar toda a informação recolhida ao longo da execução.
+
+A função extrair_pagina(url) é o núcleo do programa. Esta função recebe o link de uma página, faz o pedido HTTP e utiliza o BeautifulSoup para encontrar todos os blocos de doenças (identificados pela classe "views-row"). Para cada bloco, o código extrai o nome da doença, a descrição curta e o link para a página detalhada. Depois, faz um novo pedido a esse link para obter a descrição completa. Toda esta informação é organizada num dicionário, onde cada doença é associada às suas respetivas descrições.
+
+No programa principal, é utilizado um ciclo for para percorrer todas as letras do alfabeto. Para cada letra, a função é chamada com a URL correspondente, e os resultados são combinados no dicionário global usando o operador de união (|), permitindo juntar toda a informação num único conjunto de dados.
+
+Por fim, o dicionário final é guardado num ficheiro JSON chamado "doencasTPC.json", com indentação para facilitar a leitura e codificação UTF-8 para preservar caracteres especiais. De forma geral, o código cumpre o objetivo de automatizar a recolha de dados, embora possa ser melhorado com tratamento de erros, validação dos elementos HTML e otimização dos pedidos para maior eficiência.
