@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <title>Dicionário Médico - Home</title>
+{% endblock %}
+
+{% block body %}
+    <div class="p-5 mb-4 bg-light rounded-3 border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Bem-vindo ao Dicionário Médico</h1>
+            <p class="col-md-8 fs-4">
+                Explore a nossa base de dados de termos médicos. Aqui encontrará definições claras e precisas para auxiliar no seu estudo ou consulta rápida.
+            </p>
+            <hr class="my-4">
+            <p>Utilize o botão abaixo para ver a lista completa de termos técnicos disponíveis.</p>
+            <a class="btn btn-primary btn-lg" href="/conceitos" role="button">Ver Conceitos</a>
+        </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>API de Dados</h2>
+                <p>Oferecemos um endpoint JSON para programadores que queiram integrar os nossos dados noutras aplicações.</p>
+                <a class="btn btn-outline-light" href="/api/conceitos">Aceder à API</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Sobre o Projeto</h2>
+                <p>Este dicionário é alimentado por um ficheiro JSON local, demonstrando a integração simples entre Python (Flask) e front-end moderno.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
